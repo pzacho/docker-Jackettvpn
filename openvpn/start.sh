@@ -202,6 +202,12 @@ if [[ $VPN_ENABLED == "yes" ]]; then
 		echo "[INFO] VPN_DEVICE_TYPE set as '${VPN_DEVICE_TYPE}', since WireGuard will always be wg0." | ts '%Y-%m-%d %H:%M:%.S'
 	fi
 
+	# set directorys for access
+	mkdir -p /dev/net
+	if [ ! -c /dev/net/tun ]; then
+		mknod /dev/net/tun c 10 200
+	fi
+
 	# get values from env vars as defined by user
 	export LAN_NETWORK=$(echo "${LAN_NETWORK}" | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
 	if [[ ! -z "${LAN_NETWORK}" ]]; then
