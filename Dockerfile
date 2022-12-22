@@ -19,9 +19,9 @@ RUN apt update \
     ca-certificates \
     curl \
     && JACKETT_VERSION=$(curl -sX GET "https://api.github.com/repos/Jackett/Jackett/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') \
-    && curl -o /opt/Jackett.Binaries.LinuxAMDx64.tar.gz -L "https://github.com/Jackett/Jackett/releases/download/${JACKETT_VERSION}/Jackett.Binaries.LinuxAMDx64.tar.gz" \
-    && tar -xzf /opt/Jackett.Binaries.LinuxAMDx64.tar.gz -C /opt \
-    && rm -f /opt/Jackett.Binaries.LinuxAMDx64.tar.gz \ 
+    && curl -o /opt/Jackett.Binaries.LinuxARM64.tar.gz -L "https://github.com/Jackett/Jackett/releases/download/${JACKETT_VERSION}/Jackett.Binaries.LinuxARM64.tar.gz" \
+    && tar -xzf /opt/Jackett.Binaries.LinuxARM64.tar.gz -C /opt \
+    && rm -f /opt/Jackett.Binaries.LinuxARM64.tar.gz \ 
     && apt purge -y \
     ca-certificates \
     curl \
